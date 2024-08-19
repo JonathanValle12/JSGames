@@ -16,22 +16,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-gradient-to-br from-white via-[#C8D6E5] to-[#A3B8CC] min-h-screen">
 		<slot />
 	</body>
 </html>
-<style is:global>
-	:root {
-		
-	}
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	body {
-		background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(200, 214, 229, 1) 50%, rgba(163, 184, 204, 1) 100%);
-	}
-
-</style>

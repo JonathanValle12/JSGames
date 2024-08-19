@@ -1,32 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import cardsData from '../data/cardsData.json';
 
-// Array de datos para las tarjetas
-const cardsData = [
-    { title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
-	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
-	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
-	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
-	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
-	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" }
-];
-
+const reverseCardsData = [...cardsData].sort((a, b) => b.id - a.id);
 ---
 
 <Layout title="JSGames.">
-	<div class="contenedor">
+	<div class="max-w-[1200px] mx-auto my-[60px] px-5">
 		<main>
-			<header>
-				<h1>JSGames</h1>
-				<img src="./img/javascript.png" />
+			<header class="flex items-center justify-center gap-4 mb-[100px]">
+				<h1 class="text-8xl font-bold uppercase tracking-wide text-gray-900 text-center relative p-5 overflow-hidden bg-clip-text text-transparent bg-gradient-to-r from-white/20 to-white/20">
+					JSGames
+					<span class="absolute top-1/2 left-[-150%] w-[300%] h-[300%] bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-y-1/2 rotate-[15deg] animate-[shine_3s_infinite_linear]"></span>
+				</h1>
+				<img src="./img/javascript.png" class="w-[125px] h-[125px] rounded-md rotate-2 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl" />
 			</header>
 
 			<!-- Contenedor Grid -->
-			<section class="grid-container">
+			<section class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 w-full">
 				<!-- Itera sobre el array de datos para crear las tarjetas -->
-				{cardsData.map((card, index) => (
-					<Card key={index} title={card.title} description={card.description} imagen={card.imagen} indice={cardsData.length - index - 1} />
+				{reverseCardsData.map((card, index) => (
+					<Card key={index} card={card} indice={reverseCardsData.length - index - 1} />
 				))}
 			</section>
 		</main>
@@ -34,70 +29,12 @@ const cardsData = [
 </Layout>
 
 <style>
-
-	.contenedor {
-		max-width: 1200px;
-		margin: 60px auto;
-		padding: 0 20px;
-	}
-	.contenedor header {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 15px;
-		margin-bottom: 100px;
-	}
-
-	.contenedor header h1 {
-    font-size: 5rem;
-    font-family: 'Poppins', sans-serif; /* Tipografía moderna y elegante */
-    color: #333; /* Color oscuro para buena legibilidad */
-    text-transform: uppercase; /* Mayúsculas para darle más presencia */
-    font-weight: 700; /* Peso alto para un aspecto robusto */
-    letter-spacing: 0.05em; /* Espaciado entre letras */
-    text-align: center;
-    position: relative; /* Posicionamiento relativo para la animación */
-    padding: 20px;
-    overflow: hidden;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-color: transparent;
-}
-
-.contenedor header h1::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-    transform: translateY(-50%) rotate(15deg);
-    animation: shine 3s infinite linear;
-}
-
-
-@keyframes shine {
-    0% {
-        left: -150%;
-    }
-    100% {
-        left: 150%;
-    }
-}
-.contenedor img {
-    width: 125px;
-    height: 125px;
-	border-radius: 5px;
-	rotate: 5deg;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra alrededor */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-	.grid-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 40px;
-		width: 100%;
+	@keyframes shine {
+		0% {
+			left: -150%;
+		}
+		100% {
+			left: 150%;
+		}
 	}
 </style>

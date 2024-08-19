@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "Buscaminas", 
+        "description": "Desarrollé un buscaminas clásico donde los jugadores descubren casillas sin minas, evitando explosiones y usando pistas numéricas.", 
+        "imagen": "./img/buscaminas.webp", 
+        "etiquetas": ["Tablero", "Eventos de click", "Minas"],
+        "github": "https://github.com/JonathanValle12/buscaminas",
+        "demo": "https://jonathanvalle12.github.io/buscaminas/"
+    },
+    {
+        "id": 2,
+        "title": "La Serpiente", 
+        "description": "Revive la diversión retro con este clásico juego de la serpiente. Controla la serpiente, recolecta manzanas y evita colisiones en este desafiante juego de habilidad.", 
+        "imagen": "./img/proyecto_snake.webp", 
+        "etiquetas": ["Movimiento", "Colisiones", "Crecimiento"],
+        "github": "https://github.com/JonathanValle12/snake",
+        "demo": "https://jonathanvalle12.github.io/snake/"
+    },
+    {
+        "id": 3,
+        "title": "Tetris", 
+        "description": "Tetris es un juego de rompecabezas donde los jugadores deben manipular piezas para completar líneas y evitar el llenado de la pantalla con bloques.", 
+        "imagen": "./img/tetris.webp", 
+        "etiquetas": ["Piezas", "Rotación", "Líneas"],
+        "github": "https://github.com/JonathanValle12/tetris",
+        "demo": "https://tetris-alpha-teal.vercel.app/"
+    }
+]

@@ -1,79 +1,42 @@
 ---
-const { title, description, imagen, indice } = Astro.props;
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import GlobeIcon from "./icons/GlobeIcon.astro";
+const { card, indice } = Astro.props;
+
+const { title, description, imagen, etiquetas, github, demo } = card;
 
 const formattedIndex = (indice + 1).toString().padStart(2, '0');
----z
 
-<article class="card">
-    <div class="imagen-card">
-        <img src={imagen} />
-        <div class="numeracion-card">
-            <span>#{formattedIndex}</span>
+---
+
+<article class="rounded flex flex-col relative">
+    <div class="relative transition ease-in-out duration-300 hover:scale-110 cursor-pointer group">
+        <img src={imagen} class="w-full h-52 object-cover rounded-2xl mb-4" />
+        <div class="absolute top-3 left-6 text-2xl w-10 h-40 -rotate-12 group-hover:scale-105 group-hover:font-bold group-hover:text-4xl group-hover:transition-all group-hover:duration-300">
+            <span class="text-teal-300">#{formattedIndex}</span>
         </div>
     </div>
 
-    <div class="contenido-card">
-        <h2>{title}</h2>
-        <p>{description}</p>
+    <div class="contenido-card px-4 py-2">
+        <h2 class="text-4xl mb-3 font-bold cursor-pointer hover:text-teal-500">{title}</h2>
+        <p class="font-light text-wrap font-sans">{description}</p>
+
+        <section class="flex flex-wrap gap-3 mt-5">
+
+            {etiquetas.map((etiqueta: string) => (
+                <article class="bg-slate-200 rounded-2xl px-2 py-1 font-light text-sm">{etiqueta}</article>
+            ))}
+        </section>
+
+        <section class="flex flex-wrap gap-2 mt-5">
+            <a href={github} target="_blank" class="flex items-center gap-1 border border-black rounded-md px-3 py-[6px] hover:bg-gray-300 cursor-pointer">
+                <GitHubIcon /> 
+                Código
+            </a>
+            <a href={demo} target="_blank" class="flex items-center gap-1 border border-teal-500 text-teal-700 rounded-md px-3 py-[6px] hover:bg-teal-400 cursor-pointer">
+                <GlobeIcon /> 
+                Demo
+            </a>
+        </section>
     </div>
 </article>
-
-<style>
-    .card {
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .imagen-card {
-        position: relative;
-        transition: scale .3s ease;
-
-        &:hover {
-            scale: 1.05;
-        }
-    }
-
-    .imagen-card:hover .numeracion-card {
-        font-size: 2.5rem;
-        font-weight: bold;
-        transition: font-size .3s ease;
-    }
-
-    .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    .card .numeracion-card {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        font-size: 1.5rem;
-        width: 40px;
-        height: 40px;
-        rotate: -15deg;
-
-        
-    }
-
-    .contenido-card {
-        padding: 10px 15px;
-    }
-
-    .contenido-card h2 {
-        font-size: 36px;
-        margin-bottom: 10px;
-    }
-
-    .contenido-card p {
-        color: rgb(31, 41, 55 / 1);
-        font-family: system-ui, sans-serif;
-        font-weight: 300;
-        text-wrap: wrap;
-    }
-</style>

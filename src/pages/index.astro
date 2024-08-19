@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+// Array de datos para las tarjetas
+const cardsData = [
+    { title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
+	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
+	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
+	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
+	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" },
+	{ title: "Hojas de cálculo", description: "Crea tu propio Excel sin dependencias y funcional", imagen: "./img/javascript.png" }
+];
+
+---
+
+<Layout title="JSGames.">
+	<div class="contenedor">
+		<main>
+			<header>
+				<h1>JSGames</h1>
+				<img src="./img/javascript.png" />
+			</header>
+
+			<!-- Contenedor Grid -->
+			<section class="grid-container">
+				<!-- Itera sobre el array de datos para crear las tarjetas -->
+				{cardsData.map((card, index) => (
+					<Card key={index} title={card.title} description={card.description} imagen={card.imagen} indice={cardsData.length - index - 1} />
+				))}
+			</section>
+		</main>
+	</div>
+</Layout>
+
+<style>
+
+	.contenedor {
+		max-width: 1200px;
+		margin: 60px auto;
+		padding: 0 20px;
+	}
+	.contenedor header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		margin-bottom: 100px;
+	}
+
+	.contenedor header h1 {
+    font-size: 5rem;
+    font-family: 'Poppins', sans-serif; /* Tipografía moderna y elegante */
+    color: #333; /* Color oscuro para buena legibilidad */
+    text-transform: uppercase; /* Mayúsculas para darle más presencia */
+    font-weight: 700; /* Peso alto para un aspecto robusto */
+    letter-spacing: 0.05em; /* Espaciado entre letras */
+    text-align: center;
+    position: relative; /* Posicionamiento relativo para la animación */
+    padding: 20px;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-color: transparent;
+}
+
+.contenedor header h1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transform: translateY(-50%) rotate(15deg);
+    animation: shine 3s infinite linear;
+}
+
+
+@keyframes shine {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+.contenedor img {
+    width: 125px;
+    height: 125px;
+	border-radius: 5px;
+	rotate: 5deg;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra alrededor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 40px;
+		width: 100%;
+	}
+</style>
